@@ -18,6 +18,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.net.URI;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +35,7 @@ public class BookActivity extends AppCompatActivity
     private static final String GOOGLE_BOOKS_REQUEST_URL =
             "https://www.googleapis.com/books/v1/volumes?q=intitle:";
 
-    private String searchText = "";
+    private String searchText;
 
     /**
      * Constant value for the book loader ID. We can choose any integer.
@@ -51,6 +54,8 @@ public class BookActivity extends AppCompatActivity
     private TextView mEmptyStateTextView;
 
     private void loadActivity() {
+
+        Log.i(LOG_TAG, "Load Activity starting");
 
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
@@ -141,13 +146,18 @@ public class BookActivity extends AppCompatActivity
     @Override
     public Loader < List < Book >> onCreateLoader(int i, Bundle bundle) {
 
+        Log.i(LOG_TAG, "Creating new Book Loader");
+
         // Show loading indicator
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.VISIBLE);
 
-        Log.i(LOG_TAG, "Creating new Book Loader");
+        // Removing whitespaces from user input
+        searchText = searchText.replace(" ", "%20");
+
         // Create a new loader for the given URL
-        return new BookLoader(this, GOOGLE_BOOKS_REQUEST_URL+searchText);
+        return new BookLoader(this, GOOGLE_BOOKS_REQUEST_URL + searchText);
+
     }
 
     @Override
