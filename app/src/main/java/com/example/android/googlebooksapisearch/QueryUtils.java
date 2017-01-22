@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2016 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.example.android.googlebooksapisearch;
 
 import android.text.TextUtils;
@@ -34,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Helper methods related to requesting and receiving earthquake data from USGS.
+ * Helper methods related to requesting and receiving book data from Google Books API.
  */
 public final class QueryUtils {
 
@@ -50,9 +35,9 @@ public final class QueryUtils {
     }
 
     /**
-     * Query the USGS dataset and return a list of {@link Book} objects.
+     * Query the Google API and return a list of {@link Book} objects.
      */
-    public static List<Book> fetchEarthquakeData(String requestUrl) {
+    public static List<Book> fetchBookData(String requestUrl) {
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -113,7 +98,7 @@ public final class QueryUtils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the book JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -150,9 +135,9 @@ public final class QueryUtils {
      * Return a list of {@link Book} objects that has been built up from
      * parsing the given JSON response.
      */
-    private static List<Book> extractFeatureFromJson(String earthquakeJSON) {
+    private static List<Book> extractFeatureFromJson(String bookJSON) {
         // If the JSON string is empty or null, then return early.
-        if (TextUtils.isEmpty(earthquakeJSON)) {
+        if (TextUtils.isEmpty(bookJSON)) {
             return null;
         }
 
@@ -165,38 +150,49 @@ public final class QueryUtils {
         try {
 
             // Create a JSONObject from the JSON response string
-            JSONObject baseJsonResponse = new JSONObject(earthquakeJSON);
+            JSONObject baseJsonResponse = new JSONObject(bookJSON);
 
-            // Extract the JSONArray associated with the key called "features",
+            // Extract the JSONArray associated with the key called "items",
             // which represents a list of features (or books).
-            JSONArray earthquakeArray = baseJsonResponse.getJSONArray("features");
+            JSONArray bookArray = baseJsonResponse.getJSONArray("items");
 
-            // For each earthquake in the earthquakeArray, create an {@link Book} object
-            for (int i = 0; i < earthquakeArray.length(); i++) {
+            // For each book in the bookArray, create an {@link Book} object
+            for (int i = 0; i < bookArray.length(); i++) {
 
                 // Get a single book at position i within the list of books
-                JSONObject currentEarthquake = earthquakeArray.getJSONObject(i);
+                JSONObject currentBook = bookArray.getJSONObject(i);
 
                 // For a given book, extract the JSONObject associated with the
                 // key called "properties", which represents a list of all properties
                 // for that book.
-                JSONObject properties = currentEarthquake.getJSONObject("properties");
+                JSONObject volumeInfo = currentBook.getJSONObject("volumeInfo");
+                Log.i("Title from volumeInfo", volumeInfo.getString("title"));
+                Log.i("Date from volumeInfo", volumeInfo.getString("publishedDate"));
 
-                // Extract the value for the key called "mag"
-                double magnitude = properties.getDouble("mag");
+                // Set Author to missing author. This will be loaded in case there is no author available
+                String author = "No author";
+                try {
+                    JSONArray authors = volumeInfo.getJSONArray("authors");
+                    author = authors.getString(0);
+                    Log.i("Author: ", author);
+                } catch (JSONException e) {
+                    Log.e("JSON Exception", "No author available for this book", e);
+                }
 
-                // Extract the value for the key called "place"
-                String location = properties.getString("place");
+                Log.i("InfoLink da volumeInfo", volumeInfo.getString("infoLink"));
 
-                // Extract the value for the key called "time"
-                long time = properties.getLong("time");
+                // Extract the value for the key called "title"
+                String title = volumeInfo.getString("title");
+
+                // Extract the value for the key called "date"
+                String date = volumeInfo.getString("publishedDate");
 
                 // Extract the value for the key called "url"
-                String url = properties.getString("url");
+                String url = volumeInfo.getString("infoLink");
 
-                // Create a new {@link Book} object with the magnitude, location, time,
+                // Create a new {@link Book} object with the thumbnail, location, time,
                 // and url from the JSON response.
-                Book book = new Book(magnitude, location, time, url);
+                Book book = new Book(title, author, date, url);
 
                 // Add the new {@link Book} to the list of books.
                 books.add(book);
@@ -206,7 +202,7 @@ public final class QueryUtils {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+            Log.e("QueryUtils", "Problem parsing the Google Books API JSON results", e);
         }
 
         // Return the list of books

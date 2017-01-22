@@ -1,57 +1,57 @@
-/**
- * Created by Davide Nastri on 11/28/16.
- */
 package com.example.android.googlebooksapisearch;
 
 /**
  * {@link Book} represents a single quake.
- * Each object has 3 properties: magnitude, city and date.
+ * Each object has 3 properties: thumbnail, city and date.
  */
 public class Book {
+
+    /** Title of the book */
+    private String mTitle;
+
+    /** Author of the book */
+    private String mAuthor;
 
     /** Website URL of the book */
     private String mUrl;
 
-    // Book's magnitude (e.g. 7.2, 6.1)
-    private Double mMagnitude;
+    /** Thumbnail URL of the book */
+    private String mThumbnailUrl;
 
-    // Name of the city hit by the quake (e.g. Tokyo, London, Los Angeles)
-    private String mLocation;
-
-    // Time of the earthquake in milliseconds
-    private long mTimeInMilliseconds;
+    /** Thumbnail URL of the book */
+    private String mDate;
 
     /**
      * Constructs a new {@link Book} object.
      *
-     * @param magnitude is the magnitude (size) of the earthquake
-     * @param location is the city location of the earthquake
-     * @param timeInMilliseconds is the time in milliseconds (from the Epoch) when the
-     *  earthquake happened
-     * @param url is the website URL to find more details about the earthquake
+     * @param title is the book's title
+     * @param author is the book's author
+     * @param date is the book's date
+     * @param url is the website URL to find more details about the book
      */
-    public Book(Double magnitude, String location, long timeInMilliseconds, String url)
+    public Book(String title, String author, String date, String url)
     {
-        mMagnitude = magnitude;
-        mLocation = location;
-        mTimeInMilliseconds = timeInMilliseconds;
+        mTitle = title;
+        mAuthor = author;
+        mDate = date;
         mUrl = url;
     }
 
-    // Returns the magnitude
-    public Double getMagnitude() { return mMagnitude; }
+    // Returns the book's title
+    public String getTitle() { return mTitle; }
 
-    // Returns the city name
-    public String getLocation() {
-        return mLocation;
+    // Returns the book's author
+    public String getAuthor() {
+        return mAuthor;
     }
 
-    // Returns the time of the earthquake.
-    public long getTimeInMilliseconds() {
-        return mTimeInMilliseconds;
+    // Returns the book's date
+    public String getDate() {
+        return mDate;
     }
 
-     // Returns the website URL to find more information about the earthquake.
+
+    // Returns the website URL to find more information about the book.
     public String getUrl() { return mUrl; }
 
 }

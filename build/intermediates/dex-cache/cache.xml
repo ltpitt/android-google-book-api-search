@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.3.0_851d11d789e26b41cae0bfa889ee895e7077fa36/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.3.0_df0ec372384a8407a9f5b48a4b8ac21f2a622469/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6ceedcbf188361211915e4319f238514311f505d">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_61d850088af0d721ca98ebabb5f7015428999a70/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.3.0_9c6c85697c03b43de1034320ae8186549f29e865/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/libs/internal_impl-23.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_af419fcd382a24db8c31a4672df01cd91ab9a281/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.3.0/support-annotations-23.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_4112671b6be0f62a31e8b684232ed3fad3e7d3cf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="2cdb8b401dc2620ecaacdd0c0c49a9a02fda7d99">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_5586b96d41ac8d71dec6d15fc43a5b85656a5ddd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="/home/pitto/AndroidStudioProjects/android-google-books-api-search/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.3.0_b1f745cb3a0afe1fa47a641e11aacebfe0f873f7/classes.dex" />
+    </item>
+
+</items>
