@@ -15,10 +15,7 @@ public class Book {
     /** Website URL of the book */
     private String mUrl;
 
-    /** Thumbnail URL of the book */
-    private String mThumbnailUrl;
-
-    /** Thumbnail URL of the book */
+    /** Date of the book */
     private String mDate;
 
     /**
@@ -49,7 +46,6 @@ public class Book {
     public String getDate() {
         return mDate;
     }
-
 
     // Returns the website URL to find more information about the book.
     public String getUrl() { return mUrl; }
